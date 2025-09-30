@@ -551,35 +551,53 @@
            <!-- RSVP Section -->
 <section id="rsvp" style="background-color: #e46b01; color: #fff; padding: 50px 0;">
     <div class="container text-center">
-        <h2>RSVP</h2>
-        <p>Please let us know if you can make it. We'd love to see you there!</p>
-        <form action="https://example.com/rsvp" method="POST" class="mt-4">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="col-md-6">
-                    <input type="tel" class="form-control" name="phone" placeholder="Your Phone Number" required>
-                </div>
-                <div class="col-md-6">
-                    <select class="form-select" name="attendance" required>
-                        <option value="" disabled selected>Will you attend?</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        <option value="Maybe">Maybe</option>
-                    </select>
-                </div>
-                <div class="col-12">
-                    <textarea class="form-control" name="message" rows="4" placeholder="Message (Optional)"></textarea>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-light">Submit RSVP</button>
-                </div>
-            </div>
-        </form>
+      <h2>RSVP</h2>
+      <p>Please let us know if you can make it. We'd love to see you there!</p>
+  
+      <form id="rsvpForm" class="mt-4">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6">
+            <input type="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="col-md-6">
+            <input type="tel" class="form-control" placeholder="Your Phone Number" required>
+          </div>
+          <div class="col-md-6">
+            <select class="form-select" required>
+              <option value="" disabled selected>Will you attend?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Maybe">Maybe</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <textarea class="form-control" rows="4" placeholder="Message (Optional)"></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-light">Submit RSVP</button>
+          </div>
+        </div>
+      </form>
+  
+      <!-- Thank You Message (hidden by default) -->
+      <div id="thankYouMessage" style="display: none; margin-top: 20px;">
+        <h4>🎉 Thank you for your RSVP!</h4>
+        <p>We can’t wait to celebrate with you 💕</p>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    document.getElementById("rsvpForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Stop real submission
+      this.style.display = "none"; // Hide form
+      document.getElementById("thankYouMessage").style.display = "block"; // Show message
+    });
+  </script>
+  
     </div>
 </section>
 
