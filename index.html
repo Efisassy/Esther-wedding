@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esther's Birthday</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <!-- Font Awesome CDN -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    </head>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #e46b01;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #adb5bd;
+        }
+        section {
+            padding: 50px 0;
+        }
+        #home {
+            background: url('pics/main.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            height: 100vh;
+        }
+        #galleryCarousel img, 
+        .responsive-gallery img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        #timer span {
+            font-weight: bold;
+            color: #b1500a;
+        }
+        section > .container {
+            position: relative;
+        }
+        #responsive-gallery .row > div {
+            margin-bottom: 1rem;
+        }
+        .invitation-text {
+            font-size: 3rem; /* Adjust size */
+            font-weight: bold; /* Make it bold */
+            text-transform: uppercase; /* Make all letters uppercase */
+            color: #ff8c00e4; /* Bright stylish color */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Stylish shadow */
+            font-family: 'Cursive', Arial, sans-serif; /* Stylish font */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #home .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        section {
+            opacity: 0;
+            animation: sectionFadeIn 1s ease forwards;
+        }
+        
+        @keyframes sectionFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        #timer span {
+            display: inline-block;
+            animation: bounce 0.6s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    
+        .social-icon {
+            font-size: 2rem;
+            color: #7d5706;
+            transition: color 0.3s ease;
+        }
+    
+        .social-icon:hover {
+            color: #0056b3; /* Change to any color you want on hover */
+        }
+    
+        /* Responsive icon size adjustment */
+        @media (max-width: 768px) {
+            .social-icon {
+                font-size: 1.5rem;
+            }
+        }
+        footer {
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50; /* Dark background */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #ffdd00; /* Accent color */
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+
+        .wedding-program {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #c99469;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    padding: 40px 30px;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  
+  .wedding-program h2 {
+    color: #16070c;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+  
+  .program-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .program-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin: 15px 0;
+    padding: 10px 0;
+    border-bottom: 1px dashed #f3c6c6;
+    transition: background 0.3s ease;
+    flex-wrap: wrap;
+  }
+  
+  .program-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .program-list li:hover {
+    background: #ffeef2;
+    border-radius: 8px;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: #e29578;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    .wedding-program {
+      padding: 30px 20px;
+    }
+  
+    .wedding-program h2 {
+      font-size: 1.6rem;
+    }
+  
+    .program-list li {
+      font-size: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+  
+    .icon {
+      margin-right: 8px;
+      margin-bottom: 5px;
+    }
+  }
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">N&E</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Activities">Bridesmaids</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Location">Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rsvp">RSVP</a>
+                    </li>
+                    
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cover Image Section -->
+
+
+
+
+   
+  
+  
+  
+
+   
+   <!-- Cover Image Section -->
+<section id="home">
+    <div class="container text-center">
+        <p class="invitation-text">Inviting you to our wedding</p>
+    </div>
+</section>
+<!-- Special Message Section -->
+<section id="special-message" style="background-color: #c99469; padding: 50px 0;">
+    <div class="container text-center">
+        <h2 class="mb-4" style="color: #734005; font-weight: bold;">A Special Message from us</h2>
+        <p style="font-size: 1.2rem; color: #493115;">"On the 4th of October, we begin the greatest chapter of our love story. Surrounded by those who mean the most to us, we pledge to walk hand in hand through every season of life with laughter, with grace, and with unwavering love. This day is more than a celebration of us; it is a celebration of the love that brought us here and the future we are building together. Thank you for sharing in our joy, our journey, and our forever.”
+        </p>
+    </div>
+</section>
+
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="text-center my-5">
+        <h2 style="font-weight: bold;">Countdown to the Big Day!</h2>
+        <div id="timer" class="display-5 mt-3">
+            <span id="days">00</span>d :
+            <span id="hours">00</span>h :
+            <span id="minutes">00</span>m :
+            <span id="seconds">00</span>s
+        </div>
+    </section>
+
+     <!-- Wedding Program Section -->
+     <section class="wedding-program">
+        <h3>Wedding Program line-up</h3>
+        <ul class="program-list">
+          <li><span class="icon">👥</span> Arrival of Guests</li>
+          <li><span class="icon">🎤</span> MC Welcome Speech</li>
+          <li><span class="icon">🙏</span> Opening Prayer – Stephen Boamah</li>
+          <li><span class="icon">💍</span> Exchange of Vows – Rev. Korsah (ICGC)</li>
+          <li><span class="icon">📖</span> Exhortation – Rev. Korsah</li>
+          <li><span class="icon">💃</span> Arrival of Wedding Party</li>
+          <li><span class="icon">🍰</span> Cutting of Cake</li>
+          <li><span class="icon">❤️</span> Couple’s First Dance</li>
+          <li><span class="icon">🍽️</span> Dinner / Lunch</li>
+          <li><span class="icon">✨</span> Second Entrance of Couple (after change over dress)</li>
+          <li><span class="icon">👨‍👩‍👦</span> Groom & Mother Dance</li>
+          <li><span class="icon">👩‍👧</span> Bride & Father Dance</li>
+          <li><span class="icon">🎶</span> Family & Oldies Take Over the Dancefloor</li>
+          <li><span class="icon">🍾</span> Champagne Popping – (List of Champagne Poppers)</li>
+          <li><span class="icon">🥂</span> Proposal of Toast by Bestman & Response by Groom</li>
+          <li><span class="icon">💐</span> Bride Tosses Her Bouquet of Flowers</li>
+          <li><span class="icon">🙏</span> Vote of Thanks</li>
+          <li><span class="icon">🕊️</span> Closing Prayer – Pastor Bernard</li>
+        </ul>
+      </section>
+      
+
+     
+
+    <!-- Gallery Section -->
+    <section id="Gallery">
+        <div class="container text-center">
+           
+            <p>Scroll through some beautiful memories!</p>
+            <!-- Carousel -->
+            <div id="galleryCarousel" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="pics/like.jpg" class="d-block mx-auto rounded" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="pics/gallery4.jpg" class="d-block mx-auto rounded" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="pics/main.jpg" class="d-block mx-auto rounded" alt="Image 3">
+                    </div>
+                    <div class="carousel-item active">
+                        <img src="pics/like.jpg" class="d-block mx-auto rounded" alt="Image 1">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- Responsive Image Grid -->
+            <section id="responsive-gallery" class="my-5">
+                <h2>Image Gallery</h2>
+                <div class="container mt-4">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <img src="pics/gallery1.jpg" class="img-fluid rounded" alt="Gallery Image 1">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <img src="pics/gallery3.jpg" class="img-fluid rounded" alt="Gallery Image 2">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <img src="pics/an.jpg" class="img-fluid rounded" alt="Gallery Image 3">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <img src="pics/gallery4.jpg" class="img-fluid rounded" alt="Gallery Image 4">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <img src="pics/gallery2.jpg" class="img-fluid rounded" alt="Gallery Image 5">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <img src="pics/nk.JPG" class="img-fluid rounded" alt="Gallery Image 6">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <div class="mt-10 text-center bg-pink-50 py-10 px-4 rounded-2xl shadow-md">
+        <!-- Wedding Logo -->
+        <div class="w-full flex justify-center mb-4">
+            <img src="pics/hand.heicß" 
+                 alt="Our Wedding Logo" 
+                 class="max-w-[150px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[260px] w-auto h-auto object-contain mx-auto block" />
+          </div>
+          
+ß          
+      
+        <!-- Hashtag Section -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+          Join the Celebration 🎉
+        </h2>
+        <p class="text-gray-600 mb-4">
+          Share your favorite moments with us using our wedding hashtag
+        </p>
+      
+        <!-- Hashtag Highlight -->
+        <div class="inline-block bg-white border border-pink-200 rounded-full px-6 py-2 shadow-sm hover:shadow-lg transition">
+          <span class="text-pink-600 font-semibold text-lg">#meettheahinsahs</span>
+        </div>
+      </div>
+      
+      
+      
+      
+    <!-- Brides maids -->
+<section id="Activities"   style="background-color: #c99469;">
+    <div class="container  pt-5 text-center">
+        <h2 class="my-5" style="font-weight: bold;">Bridesmaids</h2>
+        <p>Meet my beautiful bridesmaids, my sisters, best friends, and partners-in-laughter.</p>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <h5 style="font-weight: bold;">Diane</h5>
+                <img src="pics/diane.JPG" alt="Games" class="img-fluid rounded">
+                <p>I finally joined the gym feeling nervous and alone, but the moment Esther(Esteloo )walked in I just knew we’d click. She welcomed me with such warmth that we became friends almost instantly. Though it’s only been a few months, it already feels like we’ve known each other forever. On this very special day I wish you overflowing happiness, deep peace, and every blessing in your married life. God bless your union. I love you dearly..</p>
+                
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 style="font-weight: bold;">Nana Ekua</h5>
+                <img src="pics/nana.jpg" alt="Picnic Treats" class="img-fluid rounded">
+                <p>I finally joined the gym feeling nervous and alone, but the moment Esther(Esteloo )walked in I just knew we’d click. She welcomed me with such warmth that we became friends almost instantly. Though it’s only been a few months, it already feels like we’ve known each other forever. On this very special day I wish you overflowing happiness, deep peace, and every blessing in your married life. God bless your union. I love you dearly.</p>
+                
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 style="font-weight: bold;">judith</h5>
+                <img src="pics/judith.JPG" alt="Photo Booth" class="img-fluid rounded">
+                <p>Esty, as I always love to you 🥰
+                    I used to see you at church anytime there was a joint service , but then I saw you as someone who doesn't like to mingle with people because in my perspective, you didn't really talk much 
+                    Until I got the chance to be close to you through your brother (Fiifi), that was when I saw u differently 🥰 
+                     And from that time till now I have really been admiring u from afar🥰
+                    Esty, a woman of POISE and VIRTUE, may the good Lord bless you 🙏🏾
+                    Today being your wedding, I pray to God to bless this union and bless every single thing that comes out of this union 🙏🏾
+                    I ❤️ you Esther</p>
+              
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <h5 style="font-weight: bold;">Serwaa</h5>
+                <img src="pics/serwaa.JPG" alt="Music and Dance" class="img-fluid rounded">
+
+                <p>I met Esther one weekend when I came home from school, and my mum introduced us,from the very first day we clicked. Even though she’s older, she’s always been so cool, humble, and fun to be around. Over the years she’s become more than just family she’s my big sister, my auntie, my best friend, my everything.
+                    One thing I love about her is how hardworking, supportive, and generous she is even though she can be extra and a little annoying sometimes, that’s what makes her the amazing person she is.
+                    Esther, as you marry the man of your dreams, I pray for God’s blessings, mercy, and favor over your home. May your marriage be filled with joy, laughter, and endless love. I love you so much, and I’m so proud to celebrate you today.</p>
+                
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+
+   
+
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #c99469;">
+        <div class="container text-center">
+            <h2 style="font-weight: bold;">Enquiry</h2>
+            <p>We'd love to hear from you! Whether you have questions about the event or want to share a message, feel free to get in touch with us.</p>
+            
+            <!-- Contact Details -->
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <h5>Contact Number</h5>
+                    <p><a href="tel:020 148 7379" class="text-dark">020 148 7379</a></p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Email Address</h5>
+                    <p><a href="mailto:hello@estherbirthday.com" class="text-dark">eefyaasare@gmail.com</a></p>
+                </div>
+            </div>
+    
+            <!-- Social Media Section -->
+<section id="SocialMedia" class="text-center mt-5">
+    <h2>Follow me</h2>
+    <p>Stay connected with us on social media!</p>
+    <div class="social-icons">
+        <!-- Facebook Icon -->
+        <a href="https://facebook.com" target="_blank" class="social-icon">
+            <i class="fab fa-facebook-square"></i>
+        </a>
+        <!-- Twitter Icon -->
+        <a href="https://twitter.com" target="_blank" class="social-icon">
+            <i class="fab fa-twitter-square"></i>
+        </a>
+        <!-- Instagram Icon -->
+        <a href="https://instagram.com" target="_blank" class="social-icon">
+            <i class="fab fa-instagram-square"></i>
+        </a>
+        <!-- LinkedIn Icon -->
+        <a href="https://linkedin.com" target="_blank" class="social-icon">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+</section>
+           <!-- RSVP Section -->
+<section id="rsvp" style="background-color: #e46b01; color: #fff; padding: 50px 0;">
+    <div class="container text-center">
+        <h2>RSVP</h2>
+        <p>Please let us know if you can make it. We'd love to see you there!</p>
+        <form action="https://example.com/rsvp" method="POST" class="mt-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="tel" class="form-control" name="phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" name="attendance" required>
+                        <option value="" disabled selected>Will you attend?</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Maybe">Maybe</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control" name="message" rows="4" placeholder="Message (Optional)"></textarea>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-light">Submit RSVP</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<section id="Location">
+    <div class="mt-5">
+        <h5>Event Location</h5>
+        <p>The wedding location, Royal Stool event, Tseaddo.</p>
+      
+        <!-- Responsive Map Container -->
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127070.26805659794!2d-0.29181800273437475!3d5.575020599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf85a13fd53799%3A0xf30844a5b3dcf372!2sRoyal%20Stool%20Events!5e0!3m2!1sen!2sgh!4v1759183630888!5m2!1sen!2sgh" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+</section>
+
+
+    <!-- Footer Section -->
+<footer class=" text-white text-center py-4 mt-5" style="background-color:#e46b01 ">
+    <p>&copy; <span id="current-year"></span> Created by Esther. All rights reserved.</p>
+</footer>
+
+<!-- Add JavaScript to dynamically set the current year -->
+<script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
